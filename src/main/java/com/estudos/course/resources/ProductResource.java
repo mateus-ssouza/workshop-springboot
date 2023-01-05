@@ -1,8 +1,8 @@
 package com.estudos.course.resources;
 
-import com.estudos.course.entities.Category;
+import com.estudos.course.entities.Product;
 import com.estudos.course.entities.User;
-import com.estudos.course.services.CategoryService;
+import com.estudos.course.services.ProductService;
 import com.estudos.course.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -14,21 +14,21 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping(value = "/categories")
-public class CategoryResource {
+@RequestMapping(value = "/products")
+public class ProductResource {
 
     @Autowired
-    private CategoryService service;
+    private ProductService service;
 
     @GetMapping
-    public ResponseEntity<List<Category>> findAll() {
-        List<Category> list = service.findAll();
+    public ResponseEntity<List<Product>> findAll() {
+        List<Product> list = service.findAll();
         return ResponseEntity.ok().body(list);
     }
 
     @GetMapping(value = "/{id}")
-    public ResponseEntity<Category> findById(@PathVariable Long id) {
-        Category c = service.findById(id);
-        return ResponseEntity.ok().body(c);
+    public ResponseEntity<Product> findById(@PathVariable Long id) {
+        Product p = service.findById(id);
+        return ResponseEntity.ok().body(p);
     }
 }
